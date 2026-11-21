@@ -15,6 +15,34 @@
       "when": 1795275966105,
       "tag": "0001_restrict_anonymous_booking_privileges",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795276113637,
+      "tag": "0002_grant_admin_desk_access_to_owner",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795276151730,
+      "tag": "0003_temp_allowlist_access_check",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1795276225802,
+      "tag": "0004_temp_allowlist_second_check",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795276250746,
+      "tag": "0005_restore_owner_only_allowlist",
+      "breakpoints": true
     }
   ]
 }

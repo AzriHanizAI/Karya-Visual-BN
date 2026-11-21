@@ -3,7 +3,7 @@ export const STUDIO_CONFIG = {
   studioName: "Studio",
   currencyPrefix: "B$",
   estimateSpread: 0.15,
-  defaultMerchantWhatsapp: "6738000000",
+  defaultMerchantWhatsapp: "6737131995",
   timezoneLabel: "Brunei Time (GMT+8)",
   timezoneOffsetHours: 8,
   services: [

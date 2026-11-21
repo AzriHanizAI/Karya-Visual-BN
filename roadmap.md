@@ -5,6 +5,6 @@
 - [x] Homepage submission and availability
 - [x] Admin login, filter, inspect, status updates
 - [x] Visitor submission, admin status update/read-back, filtering, sign-out, privacy and mobile verification
-- [ ] Owner access: awaiting owner email
-- [ ] WhatsApp recipient: awaiting real studio number
-- [ ] Owner password sign-in/reset delivery: awaiting owner account
+- [x] Owner access: account-creation flow on /auth + automatic admin grant for deadly8803494@gmail.com (grant verified, test accounts removed)
+- [x] WhatsApp recipient: +6737131995 saved as the studio number
+- [ ] Owner signs up with their own password and confirms the emailed link
