@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep public slot reads and submissions in server functions; only date/time pairs are exposed publicly to protect client details.
+- Admin pages live under the client-only authenticated layout; server functions and RLS both verify the separate admin role.
+- Keep studio pricing in the shared studio module so browser estimates and submission validation use the same rules.

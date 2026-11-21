@@ -1,0 +1,100 @@
+[
+  {
+    "capability": "code",
+    "source": "Next.js portal archive",
+    "outcome": "migrate to TanStack",
+    "status": "in_progress",
+    "next_action": "Render supplied portal"
+  },
+  {
+    "capability": "schema",
+    "source": "requested bookings table",
+    "outcome": "migrate",
+    "status": "in_progress",
+    "next_action": "Create secure bookings schema"
+  },
+  {
+    "capability": "records",
+    "source": "demo slots only",
+    "outcome": "no production records detected",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "auth identities",
+    "source": "no source auth",
+    "outcome": "new owner login",
+    "status": "pending",
+    "next_action": "Owner email required"
+  },
+  {
+    "capability": "authorization",
+    "source": "requested admin access",
+    "outcome": "protected roles",
+    "status": "in_progress",
+    "next_action": "Create admin role policies"
+  },
+  {
+    "capability": "uploaded file bytes",
+    "source": "placeholder images only",
+    "outcome": "not used by source portal",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "external providers",
+    "source": "WhatsApp link",
+    "outcome": "preserve",
+    "status": "pending",
+    "next_action": "Verify link"
+  },
+  {
+    "capability": "public endpoints",
+    "source": "none",
+    "outcome": "none",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "callbacks",
+    "source": "none",
+    "outcome": "none",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "webhooks",
+    "source": "none",
+    "outcome": "none",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "schedules",
+    "source": "none",
+    "outcome": "none",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "secrets",
+    "source": "none",
+    "outcome": "none",
+    "status": "not_applicable",
+    "next_action": ""
+  },
+  {
+    "capability": "cutover",
+    "source": "unpublished source demo",
+    "outcome": "publish when ready",
+    "status": "pending",
+    "next_action": "User publication"
+  },
+  {
+    "capability": "verification",
+    "source": "portal and admin",
+    "outcome": "end-to-end",
+    "status": "pending",
+    "next_action": "Test booking and admin status changes"
+  }
+]
