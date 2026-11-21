@@ -29,3 +29,13 @@ describe("Booking rules", () => {
     expect(STUDIO_CONFIG.disabledWeekdays).toEqual([0]);
   });
 });
+
+import { formatBnd as _fmt, whatsappLink as _wa } from "@/lib/studio";
+describe("admin desk helpers", () => {
+  it("formats estimates with thousand commas", () => {
+    expect(`B$ ${_fmt(1970)} – ${_fmt(2670)}`).toBe("B$ 1,970 – 2,670");
+  });
+  it("builds wa.me links without the plus sign", () => {
+    expect(_wa("+6737131995", "Hi A")).toBe("https://wa.me/6737131995?text=Hi%20A");
+  });
+});

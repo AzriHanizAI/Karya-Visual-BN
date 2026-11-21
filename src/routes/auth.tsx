@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { StudioNav } from "@/components/StudioNav";
 
-type Mode = "signin" | "signup" | "reset";
+type Mode = "signin" | "reset";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -26,7 +26,6 @@ export const Route = createFileRoute("/auth")({
 function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
   const [mode, setMode] = useState<Mode>("signin");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
@@ -42,7 +41,6 @@ function Auth() {
     setMode(next);
     setMessage("");
     setPassword("");
-    setConfirm("");
   }
 
   async function submit(e: FormEvent) {
@@ -56,23 +54,6 @@ function Auth() {
         });
         if (error) throw error;
         setMessage("Check your email for a password reset link.");
-      } else if (mode === "signup") {
-        if (password.length < 8) throw new Error("Choose a password of at least 8 characters.");
-        if (password !== confirm) throw new Error("The two passwords do not match.");
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/auth` },
-        });
-        if (error) throw error;
-        if (data.session) {
-          await navigate({ to: "/admin" });
-          return;
-        }
-        setMessage(
-          "Now open your email and click the confirmation link, then come back and sign in.",
-        );
-        setMode("signin");
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
@@ -91,16 +72,12 @@ function Auth() {
       <main className="mx-auto max-w-md px-6 py-20">
         <LockKeyhole className="mb-6 size-8 text-primary" />
         <h1 className="text-3xl font-semibold">
-          {mode === "signup"
-            ? "Create your admin account"
-            : mode === "reset"
+          {mode === "reset"
               ? "Reset your password"
               : "Admin sign in"}
         </h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          {mode === "signup"
-            ? "Only the email address approved for this studio is given booking desk access."
-            : mode === "reset"
+          {mode === "reset"
               ? "We’ll email you a secure reset link."
               : "Your private Studio booking desk."}
         </p>
@@ -118,26 +95,13 @@ function Auth() {
           </div>
           {mode !== "reset" && (
             <div className="space-y-2">
-              <Label htmlFor="admin-password">{mode === "signup" ? "Choose a password" : "Password"}</Label>
+              <Label htmlFor="admin-password">Password</Label>
               <Input
                 id="admin-password"
                 type="password"
-                autoComplete={mode === "signup" ? "new-password" : "current-password"}
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-          )}
-          {mode === "signup" && (
-            <div className="space-y-2">
-              <Label htmlFor="admin-confirm">Confirm your password</Label>
-              <Input
-                id="admin-confirm"
-                type="password"
-                autoComplete="new-password"
-                value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
                 required
               />
             </div>
@@ -150,18 +114,13 @@ function Auth() {
           <Button disabled={busy}>
             {busy
               ? "Please wait…"
-              : mode === "signup"
-                ? "Create account"
-                : mode === "reset"
-                  ? "Send reset link"
-                  : "Sign in"}
+              : mode === "reset"
+                ? "Send reset link"
+                : "Sign in"}
             <ArrowRight />
           </Button>
           {mode === "signin" && (
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <Button type="button" variant="link" onClick={() => switchMode("signup")}>
-                Create admin account
-              </Button>
               <Button type="button" variant="link" onClick={() => switchMode("reset")}>
                 Forgot password?
               </Button>

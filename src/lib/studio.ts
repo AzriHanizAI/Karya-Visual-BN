@@ -96,3 +96,12 @@ export function calculateEstimate(
 }
 export const BOOKING_STATUSES = ["pending", "confirmed", "completed", "cancelled"] as const;
 export type BookingStatus = (typeof BOOKING_STATUSES)[number];
+
+export function formatBnd(n: number): string {
+  return n.toLocaleString("en-US");
+}
+
+export function whatsappLink(number: string, text?: string): string {
+  const digits = number.replace(/\D/g, "");
+  return `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+}

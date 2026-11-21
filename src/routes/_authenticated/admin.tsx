@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { listBookings, updateBookingStatus } from "@/lib/bookings.functions";
-import { BOOKING_STATUSES, type BookingStatus } from "@/lib/studio";
+import { BOOKING_STATUSES, type BookingStatus, formatBnd, whatsappLink } from "@/lib/studio";
 import type { Tables } from "@/integrations/supabase/types";
 const options = queryOptions({ queryKey: ["admin-bookings"], queryFn: () => listBookings() });
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -162,7 +162,7 @@ function Admin() {
                     <span className="text-muted-foreground">{b.booking_time}</span>
                   </td>
                   <td className="whitespace-nowrap px-4 py-5">
-                    B$ {b.estimated_min_bnd} – {b.estimated_max_bnd}
+                    B$ {formatBnd(b.estimated_min_bnd)} – {formatBnd(b.estimated_max_bnd)}
                   </td>
                   <td className="px-4 py-5">
                     <Badge variant={b.status === "pending" ? "secondary" : "outline"}>
@@ -203,8 +203,24 @@ function Admin() {
                 </p>
                 <dl className="grid grid-cols-2 gap-4">
                   {[
-                    ["Email", selected.email],
-                    ["WhatsApp", selected.whatsapp_number],
+                    [
+                      "Email",
+                      <a key="e" className="text-primary underline" href={`mailto:${selected.email}`}>
+                        {selected.email}
+                      </a>,
+                    ],
+                    [
+                      "WhatsApp",
+                      <a
+                        key="w"
+                        className="text-primary underline"
+                        href={whatsappLink(selected.whatsapp_number)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {selected.whatsapp_number}
+                      </a>,
+                    ],
                     ["Company", selected.company_name || "—"],
                     ["Service", selected.service_name],
                     ["Duration", selected.duration_label],
@@ -214,11 +230,11 @@ function Admin() {
                     ],
                     [
                       "Estimate",
-                      `B$ ${selected.estimated_min_bnd} – ${selected.estimated_max_bnd}`,
+                      `B$ ${formatBnd(selected.estimated_min_bnd)} – ${formatBnd(selected.estimated_max_bnd)}`,
                     ],
                     ["Add-ons", selected.selected_addons.join(", ") || "None"],
                   ].map(([label, value]) => (
-                    <div key={label}>
+                    <div key={String(label)}>
                       <dt className="text-xs text-muted-foreground">{label}</dt>
                       <dd className="mt-1 break-words font-medium">{value}</dd>
                     </div>
@@ -232,6 +248,7 @@ function Admin() {
                 </div>
                 <div className="border-t pt-4">
                   <p className="mb-2 font-medium">Appointment status</p>
+                  <div className="flex flex-col gap-2 sm:flex-row">
                   <Select
                     disabled={busy}
                     value={selected.status}
@@ -251,6 +268,24 @@ function Admin() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <Button
+                    disabled={busy || selected.status === "confirmed"}
+                    onClick={() => {
+                      const b = selected;
+                      window.open(
+                        whatsappLink(
+                          b.whatsapp_number,
+                          `Hi ${b.client_name}, your consultation (${b.reference_id}) for ${b.service_name} on ${b.booking_date} at ${b.booking_time} (GMT+8) is confirmed! Looking forward to speaking with you.`,
+                        ),
+                        "_blank",
+                        "noopener",
+                      );
+                      void change(b.id, "confirmed");
+                    }}
+                  >
+                    Confirm &amp; Reply on WhatsApp
+                  </Button>
+                  </div>
                   {error && (
                     <p role="alert" className="mt-2 text-destructive">
                       {error}
