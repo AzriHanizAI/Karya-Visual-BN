@@ -3,15 +3,15 @@
     "capability": "code",
     "source": "Next.js portal archive",
     "outcome": "migrate to TanStack",
-    "status": "in_progress",
-    "next_action": "Render supplied portal"
+    "status": "verified",
+    "next_action": ""
   },
   {
     "capability": "schema",
     "source": "requested bookings table",
     "outcome": "migrate",
-    "status": "in_progress",
-    "next_action": "Create secure bookings schema"
+    "status": "verified",
+    "next_action": ""
   },
   {
     "capability": "records",
@@ -25,14 +25,14 @@
     "source": "no source auth",
     "outcome": "new owner login",
     "status": "pending",
-    "next_action": "Owner email required"
+    "next_action": "Owner email required to provision admin; verify password sign-in and reset email delivery after account setup"
   },
   {
     "capability": "authorization",
     "source": "requested admin access",
     "outcome": "protected roles",
-    "status": "in_progress",
-    "next_action": "Create admin role policies"
+    "status": "verified",
+    "next_action": ""
   },
   {
     "capability": "uploaded file bytes",
@@ -46,7 +46,7 @@
     "source": "WhatsApp link",
     "outcome": "preserve",
     "status": "pending",
-    "next_action": "Verify link"
+    "next_action": "WhatsApp link preserved; replace supplied placeholder recipient with owner number"
   },
   {
     "capability": "public endpoints",
@@ -94,7 +94,7 @@
     "capability": "verification",
     "source": "portal and admin",
     "outcome": "end-to-end",
-    "status": "pending",
-    "next_action": "Test booking and admin status changes"
+    "status": "verified",
+    "next_action": ""
   }
 ]

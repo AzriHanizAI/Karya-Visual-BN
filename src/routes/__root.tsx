@@ -87,13 +87,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Production estimates and consultation bookings in Brunei." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Studio | Production & Photography" },
-      { property: "og:description", content: "Production estimates and consultation bookings in Brunei." },
+      {
+        property: "og:description",
+        content: "Production estimates and consultation bookings in Brunei.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -127,7 +133,9 @@ function RootComponent() {
   const [signedIn, setSignedIn] = useState(false);
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setSignedIn(Boolean(data.user)));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
       setSignedIn(Boolean(session?.user));
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       router.invalidate();
@@ -139,7 +147,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <AccountContext.Provider value={signedIn}><Outlet /></AccountContext.Provider>
+      <AccountContext.Provider value={signedIn}>
+        <Outlet />
+      </AccountContext.Provider>
     </QueryClientProvider>
   );
 }

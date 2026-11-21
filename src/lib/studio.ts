@@ -65,15 +65,34 @@ export const STUDIO_CONFIG = {
   steps: ["Service", "Scope", "Schedule", "Details"],
 } as const;
 
-
-export function calculateEstimate(serviceId: string, durationLabel: string, locations: number, outside: boolean, addons: string[]) {
- const service = STUDIO_CONFIG.services.find(s => s.id === serviceId);
- const duration = STUDIO_CONFIG.durations.find(d => `${d.label} (${d.detail})` === durationLabel);
- if (!service || !duration) throw new Error("Invalid production selection.");
- if (!Number.isInteger(locations) || locations < 1 || locations > 10) throw new Error("Choose 1–10 locations.");
- if (new Set(addons).size !== addons.length || addons.some(label => !STUDIO_CONFIG.addons.some(a => a.label === label))) throw new Error("Invalid add-ons.");
- const total = service.basePrice + duration.price + (locations - 1) * STUDIO_CONFIG.locations.pricePerExtra + (outside ? STUDIO_CONFIG.outsideDistrict.price : 0) + STUDIO_CONFIG.addons.filter(a => addons.includes(a.label)).reduce((sum,a) => sum + a.price,0);
- return { min: Math.round(total * .85 / 10) * 10, max: Math.round(total * 1.15 / 10) * 10 };
+export function calculateEstimate(
+  serviceId: string,
+  durationLabel: string,
+  locations: number,
+  outside: boolean,
+  addons: string[],
+) {
+  const service = STUDIO_CONFIG.services.find((s) => s.id === serviceId);
+  const duration = STUDIO_CONFIG.durations.find(
+    (d) => `${d.label} (${d.detail})` === durationLabel,
+  );
+  if (!service || !duration) throw new Error("Invalid production selection.");
+  if (!Number.isInteger(locations) || locations < 1 || locations > 10)
+    throw new Error("Choose 1–10 locations.");
+  if (
+    new Set(addons).size !== addons.length ||
+    addons.some((label) => !STUDIO_CONFIG.addons.some((a) => a.label === label))
+  )
+    throw new Error("Invalid add-ons.");
+  const total =
+    service.basePrice +
+    duration.price +
+    (locations - 1) * STUDIO_CONFIG.locations.pricePerExtra +
+    (outside ? STUDIO_CONFIG.outsideDistrict.price : 0) +
+    STUDIO_CONFIG.addons
+      .filter((a) => addons.includes(a.label))
+      .reduce((sum, a) => sum + a.price, 0);
+  return { min: Math.round((total * 0.85) / 10) * 10, max: Math.round((total * 1.15) / 10) * 10 };
 }
 export const BOOKING_STATUSES = ["pending", "confirmed", "completed", "cancelled"] as const;
-export type BookingStatus = typeof BOOKING_STATUSES[number];
+export type BookingStatus = (typeof BOOKING_STATUSES)[number];

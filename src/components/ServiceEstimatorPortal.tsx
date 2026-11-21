@@ -260,7 +260,9 @@ export function ServiceEstimatorPortal({
       durationLabel: `${duration.label} (${duration.detail})`,
       locationCount,
       outsideBruneiMuara,
-      selectedAddons: STUDIO_CONFIG.addons.filter((a) => addonIds.includes(a.id)).map((a) => a.label),
+      selectedAddons: STUDIO_CONFIG.addons
+        .filter((a) => addonIds.includes(a.id))
+        .map((a) => a.label),
       estimatedMinBnd: estimate.min,
       estimatedMaxBnd: estimate.max,
       bookingDate: toIsoDate(bookingDate),
@@ -346,10 +348,7 @@ export function ServiceEstimatorPortal({
                 className="animate-in fade-in slide-in-from-right-4 p-5 duration-300 sm:p-8"
               >
                 {step === 0 && (
-                  <ServiceStep
-                    selectedId={serviceId}
-                    onSelect={(id) => setServiceId(id)}
-                  />
+                  <ServiceStep selectedId={serviceId} onSelect={(id) => setServiceId(id)} />
                 )}
                 {step === 1 && (
                   <ScopeStep
@@ -470,7 +469,9 @@ function StepIndicator({
           const clickable = canJumpTo(index);
           return (
             <li key={label}>
-              <Button variant="portal"
+              <Button
+                variant="portal"
+                size="portal"
                 type="button"
                 onClick={() => clickable && onJump(index)}
                 disabled={!clickable && !isActive}
@@ -540,7 +541,9 @@ function ServiceStep({
           const selected = service.id === selectedId;
           const Icon: LucideIcon = service.icon;
           return (
-            <Button variant="portal"
+            <Button
+              variant="portal"
+              size="portal"
               key={service.id}
               type="button"
               role="radio"
@@ -720,10 +723,13 @@ function ScopeStep({
               {STUDIO_CONFIG.outsideDistrict.label}
             </span>
             <span className="text-xs text-muted-foreground">
-              {STUDIO_CONFIG.outsideDistrict.detail} · + {formatBnd(STUDIO_CONFIG.outsideDistrict.price)}
+              {STUDIO_CONFIG.outsideDistrict.detail} · +{" "}
+              {formatBnd(STUDIO_CONFIG.outsideDistrict.price)}
             </span>
           </div>
-          <Button variant="portal"
+          <Button
+            variant="portal"
+            size="portal"
             type="button"
             role="switch"
             aria-checked={outsideBruneiMuara}
@@ -753,7 +759,9 @@ function ScopeStep({
             const active = addonIds.includes(addon.id);
             const Icon: LucideIcon = addon.icon;
             return (
-              <Button variant="portal"
+              <Button
+                variant="portal"
+                size="portal"
                 key={addon.id}
                 type="button"
                 aria-pressed={active}
@@ -766,7 +774,10 @@ function ScopeStep({
                 ].join(" ")}
               >
                 <Icon
-                  className={["size-4 shrink-0", active ? "text-primary-foreground" : "text-muted-foreground"].join(" ")}
+                  className={[
+                    "size-4 shrink-0",
+                    active ? "text-primary-foreground" : "text-muted-foreground",
+                  ].join(" ")}
                   aria-hidden="true"
                 />
                 <span className="flex-1 text-sm font-medium">{addon.label}</span>
@@ -819,9 +830,7 @@ function ScheduleStep({
 
   const bookedForDate = useMemo(() => {
     if (!isoDate) return new Set<string>();
-    return new Set(
-      bookedSlots.filter((s) => s.date === isoDate).map((s) => normaliseTime(s.time)),
-    );
+    return new Set(bookedSlots.filter((s) => s.date === isoDate).map((s) => normaliseTime(s.time)));
   }, [bookedSlots, isoDate]);
 
   return (
@@ -858,7 +867,9 @@ function ScheduleStep({
                 const selected = time === slot.value;
                 const note = "note" in slot ? slot.note : undefined;
                 return (
-                  <Button variant="portal"
+                  <Button
+                    variant="portal"
+                    size="portal"
                     key={slot.value}
                     type="button"
                     role="radio"
@@ -897,7 +908,9 @@ function ScheduleStep({
                         </Badge>
                       )}
                       {!isBooked && isPast && (
-                        <span className="text-[10px] font-medium text-muted-foreground">Passed</span>
+                        <span className="text-[10px] font-medium text-muted-foreground">
+                          Passed
+                        </span>
                       )}
                     </span>
                     {note && (
@@ -984,7 +997,12 @@ function DetailsStep({
               onChange={(e) => onChange("companyName", e.target.value)}
             />
           </FormField>
-          <FormField id="whatsappNumber" label="WhatsApp number" required error={errors.whatsappNumber}>
+          <FormField
+            id="whatsappNumber"
+            label="WhatsApp number"
+            required
+            error={errors.whatsappNumber}
+          >
             <div className="flex">
               <span className="inline-flex items-center rounded-l-md border border-r-0 border-border bg-muted px-3 text-sm font-medium text-muted-foreground">
                 +673
@@ -1041,7 +1059,10 @@ function DetailsStep({
         </div>
 
         {submitError && (
-          <p role="alert" className="rounded-lg border border-destructive bg-destructive-muted px-3 py-2 text-sm text-destructive">
+          <p
+            role="alert"
+            className="rounded-lg border border-destructive bg-destructive-muted px-3 py-2 text-sm text-destructive"
+          >
             {submitError}
           </p>
         )}
@@ -1153,7 +1174,10 @@ function EstimateSummary({
         )}
 
         <div className="flex items-start gap-2 rounded-lg bg-muted px-3 py-2.5 text-sm">
-          <CalendarDays className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+          <CalendarDays
+            className="mt-0.5 size-4 shrink-0 text-muted-foreground"
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
             <span className="text-xs text-muted-foreground">Consultation</span>
             <span className="font-medium text-primary">{scheduleLabel ?? "Not selected yet"}</span>
@@ -1162,8 +1186,13 @@ function EstimateSummary({
 
         <div className="border-t border-dashed border-border pt-4">
           <span className="text-xs text-muted-foreground">Estimated range (± 15%)</span>
-          <p className="mt-1 text-2xl font-semibold tracking-normal tabular-nums text-foreground" aria-live="polite">
-            {items.length === 0 ? `${STUDIO_CONFIG.currencyPrefix} —` : `${formatBnd(min)} – ${formatBnd(max)}`}
+          <p
+            className="mt-1 text-2xl font-semibold tracking-normal tabular-nums text-foreground"
+            aria-live="polite"
+          >
+            {items.length === 0
+              ? `${STUDIO_CONFIG.currencyPrefix} —`
+              : `${formatBnd(min)} – ${formatBnd(max)}`}
           </p>
         </div>
       </div>
@@ -1232,7 +1261,9 @@ function MobileEstimateBar({
             <EstimateSummary items={items} min={min} max={max} scheduleLabel={scheduleLabel} />
           </div>
         )}
-        <Button variant="portal"
+        <Button
+          variant="portal"
+          size="portal"
           type="button"
           onClick={() => onOpenChange(!open)}
           aria-expanded={open}
@@ -1244,7 +1275,9 @@ function MobileEstimateBar({
               Live estimate
             </span>
             <span className="text-lg font-semibold tabular-nums text-foreground">
-              {items.length === 0 ? `${STUDIO_CONFIG.currencyPrefix} —` : `${formatBnd(min)} – ${formatBnd(max)}`}
+              {items.length === 0
+                ? `${STUDIO_CONFIG.currencyPrefix} —`
+                : `${formatBnd(min)} – ${formatBnd(max)}`}
             </span>
           </span>
           <span className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground">
@@ -1325,7 +1358,11 @@ function ConfirmationCard({
       .filter(Boolean)
       .join("\n");
     const digits = merchantWhatsapp.replace(/\D/g, "");
-    window.open(`https://wa.me/${digits}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    window.open(
+      `https://wa.me/${digits}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (
@@ -1420,7 +1457,9 @@ function ConfirmationCard({
           {copied ? "Summary copied to clipboard" : ""}
         </span>
 
-        <Button variant="portal"
+        <Button
+          variant="portal"
+          size="portal"
           type="button"
           onClick={onReset}
           className="text-center text-xs font-medium text-muted-foreground underline-offset-4 hover:text-primary hover:underline"

@@ -8,6 +8,13 @@
       "when": 1795275603284,
       "tag": "0000_create_secure_booking_desk",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795275966105,
+      "tag": "0001_restrict_anonymous_booking_privileges",
+      "breakpoints": true
     }
   ]
 }
