@@ -8,15 +8,15 @@ import { StudioNav } from "@/components/StudioNav";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
-      { title: "Choose a New Password | Cerita Kita Productions" },
+      { title: "Choose a New Password | Karya Visual BN" },
       {
         name: "description",
-        content: "Securely reset your Cerita Kita Productions administrator password.",
+        content: "Securely reset your Karya Visual BN administrator password.",
       },
-      { property: "og:title", content: "Choose a New Password | Cerita Kita Productions" },
+      { property: "og:title", content: "Choose a New Password | Karya Visual BN" },
       {
         property: "og:description",
-        content: "Recover access to your Cerita Kita Productions booking desk.",
+        content: "Recover access to your Karya Visual BN booking desk.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

@@ -13,20 +13,20 @@ const slotsOptions = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cerita Kita Productions | Production Estimator & Consultation" },
+      { title: "Karya Visual BN | Production Estimator & Consultation" },
       {
         name: "description",
         content:
-          "Configure your production with Cerita Kita Productions, get a live BND estimate, and request a consultation in Brunei.",
+          "Configure your production with Karya Visual BN, get a live BND estimate, and request a consultation in Brunei.",
       },
       {
         property: "og:title",
-        content: "Cerita Kita Productions | Production Estimator & Consultation",
+        content: "Karya Visual BN | Production Estimator & Consultation",
       },
       {
         property: "og:description",
         content:
-          "Photography, brand films, events and social content with Cerita Kita Productions. Plan your next production.",
+          "Photography, brand films, events and social content with Karya Visual BN. Plan your next production.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
