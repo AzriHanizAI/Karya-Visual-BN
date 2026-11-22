@@ -22,13 +22,16 @@ const options = queryOptions({ queryKey: ["admin-bookings"], queryFn: () => list
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Admin Booking Desk | Studio" },
+      { title: "Admin Booking Desk | Cerita Kita Productions" },
       {
         name: "description",
-        content: "Review Studio clients, estimates, and appointment statuses.",
+        content: "Review Cerita Kita Productions clients, estimates, and appointment statuses.",
       },
-      { property: "og:title", content: "Admin Booking Desk | Studio" },
-      { property: "og:description", content: "Private consultation management for Studio." },
+      { property: "og:title", content: "Admin Booking Desk | Cerita Kita Productions" },
+      {
+        property: "og:description",
+        content: "Private consultation management for Cerita Kita Productions.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

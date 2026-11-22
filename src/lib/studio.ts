@@ -1,6 +1,6 @@
 import { Clapperboard, Video, Camera, Aperture, Plane, Zap, HardDrive, Mic } from "lucide-react";
 export const STUDIO_CONFIG = {
-  studioName: "Studio",
+  studioName: "Cerita Kita Productions",
   currencyPrefix: "B$",
   estimateSpread: 0.15,
   defaultMerchantWhatsapp: "6737131995",

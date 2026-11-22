@@ -8,10 +8,16 @@ import { StudioNav } from "@/components/StudioNav";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
-      { title: "Choose a New Password | Studio" },
-      { name: "description", content: "Securely reset your Studio administrator password." },
-      { property: "og:title", content: "Choose a New Password | Studio" },
-      { property: "og:description", content: "Recover access to your Studio booking desk." },
+      { title: "Choose a New Password | Cerita Kita Productions" },
+      {
+        name: "description",
+        content: "Securely reset your Cerita Kita Productions administrator password.",
+      },
+      { property: "og:title", content: "Choose a New Password | Cerita Kita Productions" },
+      {
+        property: "og:description",
+        content: "Recover access to your Cerita Kita Productions booking desk.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

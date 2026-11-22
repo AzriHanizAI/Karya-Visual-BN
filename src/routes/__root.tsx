@@ -83,13 +83,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Studio | Production & Photography" },
-      { name: "description", content: "Production estimates and consultation bookings in Brunei." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Studio | Production & Photography" },
+      { title: "Cerita Kita Productions | Production & Photography" },
+      {
+        name: "description",
+        content: "Production estimates and consultation bookings with Cerita Kita Productions.",
+      },
+      { name: "author", content: "Cerita Kita Productions" },
+      { property: "og:title", content: "Cerita Kita Productions | Production & Photography" },
       {
         property: "og:description",
-        content: "Production estimates and consultation bookings in Brunei.",
+        content: "Production estimates and consultation bookings with Cerita Kita Productions.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

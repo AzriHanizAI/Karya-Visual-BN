@@ -12,10 +12,16 @@ type Mode = "signin" | "reset";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Admin Sign In | Studio" },
-      { name: "description", content: "Secure sign in for the Studio booking desk." },
-      { property: "og:title", content: "Admin Sign In | Studio" },
-      { property: "og:description", content: "Manage Studio consultation requests securely." },
+      { title: "Admin Sign In | Cerita Kita Productions" },
+      {
+        name: "description",
+        content: "Secure sign in for the Cerita Kita Productions booking desk.",
+      },
+      { property: "og:title", content: "Admin Sign In | Cerita Kita Productions" },
+      {
+        property: "og:description",
+        content: "Manage Cerita Kita Productions consultation requests securely.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -79,7 +85,7 @@ function Auth() {
         <p className="mt-3 text-sm text-muted-foreground">
           {mode === "reset"
               ? "We’ll email you a secure reset link."
-              : "Your private Studio booking desk."}
+              : "Your private Cerita Kita Productions booking desk."}
         </p>
         <form onSubmit={submit} className="mt-8 flex flex-col gap-5">
           <div className="space-y-2">

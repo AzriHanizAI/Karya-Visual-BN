@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Aperture, ArrowUpRight, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { STUDIO_CONFIG } from "@/lib/studio";
 import { useContext, createContext } from "react";
 export const AccountContext = createContext(false);
 export function StudioNav() {
@@ -21,7 +22,7 @@ export function StudioNav() {
         <Button variant="ghost" asChild>
           <Link to="/">
             <Aperture className="size-5" />
-            Studio
+            {STUDIO_CONFIG.studioName}
             <span className="hidden text-xs font-normal text-muted-foreground sm:inline">
               {" "}
               / Production & photography
