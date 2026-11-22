@@ -1,6 +1,6 @@
 # Karya Visual BN — Interactive Client Intake, Cost Estimator & Booking Portal
 
-**Live Demo:** [Insert Your Vercel / Lovable Live Link Here]
+**Live Demo:** https://karya-visual-bn.lovable.app/
 
 ## The Business Problem
 Service-based businesses in Brunei—such as film production houses, photography studios, car detailing centers, and interior designers—lose high-intent leads after office hours. Staff spend hours manually replying to repetitive WhatsApp/Instagram DMs asking for package prices, project specs, and calendar availability.
@@ -16,4 +16,4 @@ A full-stack, mobile-first client intake and booking web application built speci
 * **Backend & Database:** Supabase (PostgreSQL, Authentication, Row-Level Security)
 
 ---
-*Built by [Your Name / FlowEdge AI Enterprise] — Custom Web Apps & AI Automation for Brunei SMEs.*
+*Built by [Azri Haniz / FlowEdge AI Enterprise] — Custom Web Apps & AI Automation for Brunei SMEs.*
