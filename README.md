@@ -16,4 +16,4 @@ A full-stack, mobile-first client intake and booking web application built speci
 * **Backend & Database:** Supabase (PostgreSQL, Authentication, Row-Level Security)
 
 ---
-*Built by [Azri Haniz / FlowEdge AI Enterprise] — Custom Web Apps & AI Automation for Brunei SMEs.*
+*Built by Azri Haniz / FlowEdge AI Enterprise — Custom Web Apps & AI Automation for Brunei SMEs.*
