@@ -3,7 +3,7 @@
 **Live Demo:** https://karya-visual-bn.lovable.app/
 
 ## The Business Problem
-Service-based businesses in Brunei—such as film production houses, photography studios, car detailing centers, and interior designers—lose high-intent leads after office hours. Staff spend hours manually replying to repetitive WhatsApp/Instagram DMs asking for package prices, project specs, and calendar availability.
+Service-based businesses in Brunei—such as film production houses, photography studios, car detailing centers and interior designers, they lose high-intent leads Outside office hours. Staff spend hours manually replying to repetitive WhatsApp/Instagram DMs asking for package prices, project specs, and calendar availability.
 
 ## The Solution
 A full-stack, mobile-first client intake and booking web application built specifically for Bruneian service workflows:
