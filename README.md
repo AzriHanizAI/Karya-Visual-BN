@@ -1,5 +1,3 @@
-# Karya Visual BN
-
 # Karya Visual BN — Interactive Client Intake, Cost Estimator & Booking Portal
 
 **Live Demo:** [Insert Your Vercel / Lovable Live Link Here]
